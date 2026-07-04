@@ -1,0 +1,45 @@
+{
+  "skill": "adsterra-code-handoff",
+  "generatedAt": "2026-07-04T11:45:40Z",
+  "status": "pass",
+  "domain": "scarygrocerythenightshift.com",
+  "cloudflarePagesProject": "scary-grocery-the-night-shift-git",
+  "siteRoot": "/Users/ah/Documents/GitHub/roblox_monetization/site-autopilot/sites/scary-grocery-the-night-shift-calculator",
+  "projectDir": "/Users/ah/Documents/GitHub/roblox_monetization/site-autopilot/projects/scary-grocery-the-night-shift",
+  "parsedPlacements": [
+    {
+      "format": "popunder",
+      "scriptUrl": "https://pl30203325.effectivecpmnetwork.com/ed/fe/cf/edfecf437358ccae5350f5e65f038651.js"
+    }
+  ],
+  "unresolved": [],
+  "warnings": [
+    "Missing core display env vars: NEXT_PUBLIC_ADSTERRA_BANNER_728X90_KEY, NEXT_PUBLIC_ADSTERRA_BANNER_320X50_KEY, NEXT_PUBLIC_ADSTERRA_BANNER_300X250_KEY, NEXT_PUBLIC_ADSTERRA_NATIVE_1_ID, NEXT_PUBLIC_ADSTERRA_NATIVE_1_SCRIPT_URL. The site still runs, but those ad slots remain hidden."
+  ],
+  "productionEnvVarNames": [
+    "NEXT_PUBLIC_ADSTERRA_ENABLE_POPUNDER",
+    "NEXT_PUBLIC_ADSTERRA_ENABLE_SOCIAL_BAR",
+    "NEXT_PUBLIC_ADSTERRA_ENABLE_STICKY_RAIL",
+    "NEXT_PUBLIC_ADSTERRA_POPUNDER_DELAY_MS",
+    "NEXT_PUBLIC_ADSTERRA_POPUNDER_MIN_PAGEVIEWS",
+    "NEXT_PUBLIC_ADSTERRA_POPUNDER_SCRIPT_URL"
+  ],
+  "envPayload": "/Users/ah/Documents/GitHub/roblox_monetization/site-autopilot/sites/scary-grocery-the-night-shift-calculator/adsterra_cloudflare_env.production.json",
+  "envExample": "/Users/ah/Documents/GitHub/roblox_monetization/site-autopilot/sites/scary-grocery-the-night-shift-calculator/adsterra_env.production.example",
+  "cloudflareSync": {
+    "status": "applied",
+    "report": "/Users/ah/Documents/GitHub/roblox_monetization/site-autopilot/sites/scary-grocery-the-night-shift-calculator/adsterra_cloudflare_sync_report.json",
+    "productionEnvVarNames": [
+      "NEXT_PUBLIC_ADSTERRA_ENABLE_POPUNDER",
+      "NEXT_PUBLIC_ADSTERRA_ENABLE_SOCIAL_BAR",
+      "NEXT_PUBLIC_ADSTERRA_ENABLE_STICKY_RAIL",
+      "NEXT_PUBLIC_ADSTERRA_POPUNDER_DELAY_MS",
+      "NEXT_PUBLIC_ADSTERRA_POPUNDER_MIN_PAGEVIEWS",
+      "NEXT_PUBLIC_ADSTERRA_POPUNDER_SCRIPT_URL"
+    ],
+    "note": "Cloudflare Pages production env was applied in a follow-up absolute-path sync after the initial relative-path sync failed."
+  },
+  "redeploy": {
+    "status": "pending_git_commit_push"
+  }
+}
