@@ -1,0 +1,20 @@
+{
+  "gameSlug": "scary-grocery-the-night-shift",
+  "status": "pass",
+  "checkedAt": "2026-07-04T07:46:09.780Z",
+  "checkedDate": "2026-07-04",
+  "checks": {
+    "requiredRoutes": [
+      "/",
+      "/codes",
+      "/tier-list",
+      "/trello",
+      "/guides",
+      "/wiki"
+    ],
+    "missingRouteFiles": []
+  },
+  "notes": [
+    "Codex content updates must use source-backed keyword-to-route decisions before adding or changing pages."
+  ]
+}
