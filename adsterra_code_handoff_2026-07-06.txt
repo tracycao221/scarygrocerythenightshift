@@ -1,0 +1,87 @@
+domain: scarygrocerythenightshift.com
+cloudflare project: scary-grocery-the-night-shift-git
+
+Popunder_1:
+<script src="https://pl30203325.effectivecpmnetwork.com/ed/fe/cf/edfecf437358ccae5350f5e65f038651.js"></script>
+
+NativeBanner_1:
+<script async="async" data-cfasync="false" src="https://pl30203326.effectivecpmnetwork.com/10ab21e05f3c27f8f55864289993afb9/invoke.js"></script>
+<div id="container-10ab21e05f3c27f8f55864289993afb9"></div>
+
+SmartLink_1:
+https://www.effectivecpmnetwork.com/dz7cgj9ck7?key=5bf49e72363bca7d568a162a14d7809b
+
+SocialBar_1:
+<script src="https://pl30203328.effectivecpmnetwork.com/20/c7/57/20c7571e83c909461f1cf19dc0eb8073.js"></script>
+
+468x60_1:
+<script>
+  atOptions = {
+    'key' : '48196f2afc9bea0041494185cbfa37cc',
+    'format' : 'iframe',
+    'height' : 60,
+    'width' : 468,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/48196f2afc9bea0041494185cbfa37cc/invoke.js"></script>
+
+300x250_1:
+<script>
+  atOptions = {
+    'key' : 'ec2a350a62f3115ff1efed66a377556c',
+    'format' : 'iframe',
+    'height' : 250,
+    'width' : 300,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/ec2a350a62f3115ff1efed66a377556c/invoke.js"></script>
+
+160x600_1:
+<script>
+  atOptions = {
+    'key' : '219aa7c0423342deb1f250f959565d80',
+    'format' : 'iframe',
+    'height' : 600,
+    'width' : 160,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/219aa7c0423342deb1f250f959565d80/invoke.js"></script>
+
+160x300_1:
+<script>
+  atOptions = {
+    'key' : '7052c09dbff2078d37b1ca0aab42f9b9',
+    'format' : 'iframe',
+    'height' : 300,
+    'width' : 160,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/7052c09dbff2078d37b1ca0aab42f9b9/invoke.js"></script>
+
+728x90_1:
+<script>
+  atOptions = {
+    'key' : '64711225ce43be4a11c70727bb1bcfbb',
+    'format' : 'iframe',
+    'height' : 90,
+    'width' : 728,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/64711225ce43be4a11c70727bb1bcfbb/invoke.js"></script>
+
+320x50_1:
+<script>
+  atOptions = {
+    'key' : 'fda5073c274a5aca5f61fa31cf996343',
+    'format' : 'iframe',
+    'height' : 50,
+    'width' : 320,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/fda5073c274a5aca5f61fa31cf996343/invoke.js"></script>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AdsterraSmartLinkAnchor } from "@/components/ads";
 import { officialLinks, siteConfig } from "@/data/site";
 
 export function Footer() {
@@ -51,6 +52,7 @@ export function Footer() {
         </div>
         <div className="mt-8 border-t border-white/10 pt-5 text-sm text-white/42">
           {siteConfig.domain.replace("https://", "")} is an unofficial fan-made Roblox resource.
+          <AdsterraSmartLinkAnchor className="ml-3 hover:text-white">Sponsored</AdsterraSmartLinkAnchor>
         </div>
       </div>
     </footer>
