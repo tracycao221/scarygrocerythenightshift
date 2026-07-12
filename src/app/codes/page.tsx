@@ -7,18 +7,18 @@ import { Breadcrumbs, PageIntro, SectionHeader } from "@/components/ui/content";
 export const metadata: Metadata = {
   title: `${siteConfig.gameName} Codes`,
   description: `${siteConfig.gameName} codes status, redemption steps, and source confidence notes.`,
-  alternates: { canonical: `${siteConfig.domain}/codes` },
+  alternates: { canonical: `${siteConfig.domain}/codes/` },
   openGraph: {
     title: `${siteConfig.gameName} Codes`,
     description: `${siteConfig.gameName} codes status, redemption steps, and source confidence notes.`,
-    url: `${siteConfig.domain}/codes`,
-    images: ["/opengraph-image"]
+    url: `${siteConfig.domain}/codes/`,
+    images: ["/codes/opengraph-image"]
   },
   twitter: {
     card: "summary_large_image",
     title: `${siteConfig.gameName} Codes`,
     description: `${siteConfig.gameName} codes status, redemption steps, and source confidence notes.`,
-    images: ["/opengraph-image"]
+    images: ["/codes/opengraph-image"]
   }
 };
 

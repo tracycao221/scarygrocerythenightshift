@@ -8,7 +8,7 @@ import { Breadcrumbs, PageIntro, SectionHeader } from "@/components/ui/content";
 export const metadata: Metadata = {
   title: `${siteConfig.gameName} Guides`,
   description: `Beginner, progression, and advanced strategy guides for ${siteConfig.gameName}.`,
-  alternates: { canonical: `${siteConfig.domain}/guides` }
+  alternates: { canonical: `${siteConfig.domain}/guides/` }
 };
 
 export default function GuidesPage() {
@@ -38,6 +38,18 @@ export default function GuidesPage() {
             </Link>
           ))}
         </div>
+      </section>
+      <section className="mt-10 grid gap-4 md:grid-cols-2">
+        <Link href="/updates" className="content-card">
+          <span className="mini-label">Source watch</span>
+          <h2 className="mt-3 text-xl font-bold text-white">Check update status</h2>
+          <p className="mt-2 text-sm leading-6 text-white/65">Use the updates page for source-watch notes before trusting copied patch or code claims.</p>
+        </Link>
+        <Link href="/wiki" className="content-card">
+          <span className="mini-label">Wiki</span>
+          <h2 className="mt-3 text-xl font-bold text-white">Avoid template leftovers</h2>
+          <p className="mt-2 text-sm leading-6 text-white/65">Use wiki and guide pages for verified store, item, and survival notes instead of unrelated planner routes.</p>
+        </Link>
       </section>
       <AdsterraArticleBottom />
     </main>

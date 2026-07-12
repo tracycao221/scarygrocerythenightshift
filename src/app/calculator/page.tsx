@@ -8,7 +8,7 @@ import { Breadcrumbs, PageIntro } from "@/components/ui/content";
 export const metadata: Metadata = {
   title: `${siteConfig.gameName} Checklist`,
   description: `Use the ${siteConfig.gameName} checklist to plan code checks, source checks, shift tasks, guide notes, and survival decisions.`,
-  alternates: { canonical: `${siteConfig.domain}/calculator` }
+  alternates: { canonical: `${siteConfig.domain}/calculator/` }
 };
 
 export default function CalculatorPage() {

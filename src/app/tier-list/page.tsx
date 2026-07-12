@@ -8,18 +8,18 @@ import { Breadcrumbs, PageIntro, SectionHeader } from "@/components/ui/content";
 export const metadata: Metadata = {
   title: `${siteConfig.gameName} Tier List`,
   description: `${siteConfig.gameName} source checks and survival priorities for codes, official links, walkthroughs, endings, badges, and night-shift prep.`,
-  alternates: { canonical: `${siteConfig.domain}/tier-list` },
+  alternates: { canonical: `${siteConfig.domain}/tier-list/` },
   openGraph: {
     title: `${siteConfig.gameName} Tier List`,
     description: `${siteConfig.gameName} source checks and survival priorities for codes, official links, walkthroughs, endings, badges, and night-shift prep.`,
-    url: `${siteConfig.domain}/tier-list`,
-    images: ["/opengraph-image"]
+    url: `${siteConfig.domain}/tier-list/`,
+    images: ["/tier-list/opengraph-image"]
   },
   twitter: {
     card: "summary_large_image",
     title: `${siteConfig.gameName} Tier List`,
     description: `${siteConfig.gameName} source checks and survival priorities for codes, official links, walkthroughs, endings, badges, and night-shift prep.`,
-    images: ["/opengraph-image"]
+    images: ["/tier-list/opengraph-image"]
   }
 };
 
