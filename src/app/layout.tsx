@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import Script from "next/script";
 import { AdsterraPopunderGate, AdsterraSmartLink, AdsterraSocialBarGate, AdsterraStickyRail } from "@/components/ads";
 import { GoogleAnalyticsPageView } from "@/components/analytics/GoogleAnalyticsPageView";
+import { RouteAwareAdSlots } from "@/components/ads/RouteAwareAdSlots";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { runtimeConfig } from "@/lib/runtime-config";
@@ -87,6 +88,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <AdsterraSocialBarGate />
         <AdsterraSmartLink />
         <Navbar />
+        <RouteAwareAdSlots />
         {children}
         <AdsterraStickyRail />
         <Footer />
