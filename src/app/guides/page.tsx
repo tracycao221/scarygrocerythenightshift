@@ -51,6 +51,24 @@ export default function GuidesPage() {
           <p className="mt-2 text-sm leading-6 text-white/65">Use wiki and guide pages for verified store, item, and survival notes instead of unrelated planner routes.</p>
         </Link>
       </section>
+      <section className="mt-10">
+        <SectionHeader
+          eyebrow="Other Roblox task routes"
+          title="A related house-task guide for a different game"
+          copy="This is an editorial recommendation for players who like objective routes; it is not a Scary Grocery source."
+        />
+        <a
+          href="https://washthehouse.com/mansion-route/"
+          className="content-card mt-6 block"
+          rel="noopener"
+        >
+          <span className="mini-label">Independent fan guide</span>
+          <h2 className="mt-3 text-xl font-bold text-white">WashTheHouse mansion route</h2>
+          <p className="mt-2 text-sm leading-6 text-white/65">
+            Plan a room-by-room cleaning route, return misplaced items, and reduce backtracking in Wash The House.
+          </p>
+        </a>
+      </section>
       <AdsterraArticleBottom />
     </main>
   );
