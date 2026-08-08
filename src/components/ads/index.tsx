@@ -1,7 +1,41 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { runtimeConfig } from "@/lib/runtime-config";
+import { runtimeConfig as sourceRuntimeConfig } from "@/lib/runtime-config";
+
+export const ADSTERRA_RUNTIME_VERSION = "2026-07-27.2";
+
+// Static sites do not all declare every optional Adsterra field in their
+// environment-derived config type. The generated source can still provide
+// any subset at build time, so read it through a common optional contract.
+type AdsterraRuntimeConfig = {
+  adsterraBanner160x300Key?: string;
+  adsterraBanner160x300ScriptUrl?: string;
+  adsterraBanner160x600Key?: string;
+  adsterraBanner160x600ScriptUrl?: string;
+  adsterraBanner300x250Key?: string;
+  adsterraBanner300x250ScriptUrl?: string;
+  adsterraBanner320x50Key?: string;
+  adsterraBanner320x50ScriptUrl?: string;
+  adsterraBanner468x60Key?: string;
+  adsterraBanner468x60ScriptUrl?: string;
+  adsterraBanner728x90Key?: string;
+  adsterraBanner728x90ScriptUrl?: string;
+  adsterraEnablePopunder?: boolean;
+  adsterraEnableSocialBar?: boolean;
+  adsterraEnableStickyRail?: boolean;
+  adsterraLeaderboardId?: string;
+  adsterraNative1Id?: string;
+  adsterraNative1ScriptUrl?: string;
+  adsterraPopunderDelayMs: number;
+  adsterraPopunderMinPageViews: number;
+  adsterraPopunderScriptUrl?: string;
+  adsterraSmartLinkUrl?: string;
+  adsterraSocialBarScriptUrl?: string;
+};
+
+const runtimeConfig = sourceRuntimeConfig as unknown as AdsterraRuntimeConfig;
 
 type BannerSize = "160x300" | "160x600" | "300x250" | "320x50" | "468x60" | "728x90";
 
@@ -51,6 +85,8 @@ const bannerConfigs: Record<BannerSize, BannerConfig> = {
   }
 };
 
+const CLEAN_AD_ROUTES = new Set(["/about", "/contact", "/disclosure", "/privacy", "/sources", "/terms"]);
+
 declare global {
   interface Window {
     atOptions?: {
@@ -88,6 +124,16 @@ function hasLeaderboardSlot() {
 
 function hasNativeSlot(containerId?: string, scriptUrl?: string) {
   return Boolean(containerId && normalizeScriptUrl(scriptUrl));
+}
+
+function isCleanAdRoute(pathname?: string | null) {
+  if (!pathname) return false;
+  const cleanPath = pathname.length > 1 ? pathname.replace(/\/+$/, "") : pathname;
+  return CLEAN_AD_ROUTES.has(cleanPath);
+}
+
+function useCleanAdRoute() {
+  return isCleanAdRoute(usePathname());
 }
 
 function trackAdEvent(eventName: string, payload: Record<string, unknown>) {
@@ -140,10 +186,12 @@ function AdvertisementShell({
 
 function AdsterraBannerUnit({
   className = "",
+  label,
   slotName,
   size
 }: {
   className?: string;
+  label?: string;
   slotName?: string;
   size: BannerSize;
 }) {
@@ -214,7 +262,7 @@ function AdsterraBannerUnit({
   if (!scriptUrl || !config.key) return null;
 
   return (
-    <AdvertisementShell className={className}>
+    <AdvertisementShell className={className} label={label}>
       <div
         ref={hostRef}
         className="ad-host"
@@ -316,6 +364,11 @@ export function AdsterraSmartLink() {
   return null;
 }
 
+// Backward-compatible name used by first-generation site layouts.
+export function SponsoredSmartLink() {
+  return <AdsterraSmartLink />;
+}
+
 export function AdsterraSmartLinkAnchor({
   children = "Sponsored link",
   className = ""
@@ -339,6 +392,28 @@ export function AdsterraSmartLinkAnchor({
 
 export function AdsterraBanner() {
   return <AdsterraBannerUnit size="300x250" slotName="content_rectangle" />;
+}
+
+// Compatibility exports used by existing generated sites. Unsupported or
+// unconfigured sizes remain inert because AdsterraBannerUnit returns null.
+export function AdsterraBannerBySize({
+  className,
+  label,
+  size
+}: {
+  className?: string;
+  label?: string;
+  size: BannerSize;
+}) {
+  return <AdsterraBannerUnit className={className} label={label} slotName={`legacy_${size}`} size={size} />;
+}
+
+export function AdsterraSkyscraper() {
+  return <AdsterraBannerUnit className="ad-shell-skyscraper" slotName="legacy_skyscraper_160x600" size="160x600" />;
+}
+
+export function AdsterraVerticalBanner() {
+  return <AdsterraBannerUnit className="ad-shell-vertical" slotName="legacy_vertical_160x300" size="160x300" />;
 }
 
 export function AdsterraRectangle() {
@@ -406,8 +481,45 @@ export function AdsterraToolAd() {
   );
 }
 
+export function AdsterraToolBottom() {
+  if (!hasBannerSlot("300x250")) return null;
+
+  return (
+    <div className="ad-placement ad-placement-tool-bottom">
+      <AdsterraRectangle />
+    </div>
+  );
+}
+
+/**
+ * A conservative portfolio fallback for legacy sites whose page templates
+ * have little or no inline inventory. It is wired only by the migration
+ * tool when source coverage is below the threshold, and remains clean-route
+ * aware even though it lives in the root layout.
+ */
+export function AdsterraGlobalFallback() {
+  const cleanAdRoute = useCleanAdRoute();
+  if (cleanAdRoute || !hasLeaderboardSlot()) return null;
+
+  return (
+    <div className="ad-placement ad-placement-global-fallback">
+      <AdsterraLeaderboard />
+    </div>
+  );
+}
+
+// Backward-compatible placement API used by older generated page templates.
+export function AdSlot({ label }: { label: string }) {
+  if (label === "native1") return <AdsterraNative1 />;
+  if (label === "leaderboard") return <AdsterraLeaderboard />;
+  return <AdsterraRectangle />;
+}
+
 export function AdsterraPopunderGate() {
+  const cleanAdRoute = useCleanAdRoute();
+
   useEffect(() => {
+    if (cleanAdRoute) return;
     if (!runtimeConfig.adsterraEnablePopunder || !runtimeConfig.adsterraPopunderScriptUrl) return;
 
     const pageViewsKey = "roblox-site-adsterra-pageviews";
@@ -431,13 +543,16 @@ export function AdsterraPopunderGate() {
     }, runtimeConfig.adsterraPopunderDelayMs);
 
     return () => window.clearTimeout(timer);
-  }, []);
+  }, [cleanAdRoute]);
 
   return null;
 }
 
 export function AdsterraSocialBarGate() {
+  const cleanAdRoute = useCleanAdRoute();
+
   useEffect(() => {
+    if (cleanAdRoute) return;
     if (!runtimeConfig.adsterraEnableSocialBar || !runtimeConfig.adsterraSocialBarScriptUrl) return;
     if (document.getElementById("adsterra-social-bar")) return;
 
@@ -449,14 +564,15 @@ export function AdsterraSocialBarGate() {
     script.onload = () => trackAdEvent("ad_script_loaded", { ad_slot: "social_bar", ad_format: "social_bar" });
     script.onerror = () => trackAdEvent("ad_script_error", { ad_slot: "social_bar", ad_format: "social_bar" });
     document.body.appendChild(script);
-  }, []);
+  }, [cleanAdRoute]);
 
   return null;
 }
 
 export function AdsterraStickyRail() {
+  const cleanAdRoute = useCleanAdRoute();
   const railConfig = bannerConfigs["160x600"];
-  if (!runtimeConfig.adsterraEnableStickyRail || !railConfig.key || !getBannerScriptUrl(railConfig)) {
+  if (cleanAdRoute || !runtimeConfig.adsterraEnableStickyRail || !railConfig.key || !getBannerScriptUrl(railConfig)) {
     return null;
   }
 

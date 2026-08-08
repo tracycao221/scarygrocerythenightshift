@@ -1,3 +1,5 @@
+import { adsterraStaticConfig } from "@/lib/adsterra.generated";
+
 function readEnv(value: string | undefined): string | undefined {
   return value && value.trim().length > 0 ? value : undefined;
 }
@@ -15,7 +17,7 @@ function readNumberEnv(value: string | undefined, fallback: number): number {
   return Number.isFinite(parsed) && parsed >= 0 ? parsed : fallback;
 }
 
-export const runtimeConfig = {
+const runtimeEnvConfig = {
   adsterraBannerId: readEnv(process.env.NEXT_PUBLIC_ADSTERRA_BANNER_ID),
   adsterraBanner300x250Key:
     readEnv(process.env.NEXT_PUBLIC_ADSTERRA_BANNER_300X250_KEY) ||
@@ -45,4 +47,9 @@ export const runtimeConfig = {
   adsterraEnableSocialBar: readBooleanEnv(process.env.NEXT_PUBLIC_ADSTERRA_ENABLE_SOCIAL_BAR, false),
   adsterraEnableStickyRail: readBooleanEnv(process.env.NEXT_PUBLIC_ADSTERRA_ENABLE_STICKY_RAIL, false),
   analyticsId: readEnv(process.env.NEXT_PUBLIC_ANALYTICS_ID)
+};
+
+export const runtimeConfig = {
+  ...runtimeEnvConfig,
+  ...adsterraStaticConfig
 };
